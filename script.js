@@ -15,6 +15,59 @@ const T=[{n:"Ayesha Khan",r:"Yoga and mobility coach",k:"yoga",b:"Calm, clear an
 /* Trainer photos (shown whole, never cropped) */
 const TPIC={"Ayesha Khan":"images/trainer-ayesha-khan.webp","Bilal Raza":"images/trainer-bilal-raza.webp","Sana Malik":"images/trainer-sana-malik.webp","Imran Qureshi":"images/trainer-imran-qureshi.webp"};
 const tim=t=>TPIC[t.n]?`<div class="im has-img bf tr" style="--b:url('${TPIC[t.n]}')"><img src="${TPIC[t.n]}" alt="${t.n}, ${t.r}" loading="lazy" decoding="async"></div>`:`<div class="im">${art(t.k)}</div>`;
+
+/* ===== Trainer profiles (opens as its own page: #trainer-name) ===== */
+const slug=n=>n.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const TPR={
+"Ayesha Khan":{yrs:"8+",mem:"1,200+",lang:"Urdu, English",
+ about:["Ayesha discovered yoga while recovering from long-term back and neck pain caused by desk work, and it changed the way she moves, breathes and sleeps. Today she teaches calm, clear classes where nobody is rushed and every pose has an easier option.","She is known for helping first-timers feel at home from the very first minute, and for guiding busy Karachi professionals to unwind after long workdays. Her classes blend gentle mobility work, steady breathing and a little humour."],
+ exp:[{t:"Lead Yoga and Mobility Coach",w:"FitZone Fitness, DHA Karachi",y:"2021 \u2013 Present",d:"Leads the Morning Flow, Hatha, Yin and Chair Yoga classes and designed the beginner pathway for new members."},{t:"Yoga Instructor",w:"Boutique wellness studio, Karachi",y:"2018 \u2013 2021",d:"Taught small group classes and private sessions for beginners, seniors and office workers."},{t:"Corporate Wellness Trainer",w:"Freelance, Karachi",y:"2017 \u2013 2018",d:"Ran desk-stretch and breathing breaks for office teams across the city."}],
+ cert:["Certified Yoga Instructor (200-hour training)","Breathwork and meditation foundation course","Adult First Aid and CPR"],
+ pos:[["Makes beginners feel welcome","Members say they feel calm and relaxed from the very first minute."],["Always offers an easier option","Every pose comes with a gentle variation, so nobody feels left behind."],["Sends you home smiling","Her classes end with slow breathing and a warm, positive moment."]],
+ str:["Patient","Calm voice","Beginner friendly","Mobility","Breathwork","Stress relief"],cls:["yoga","hatha","yin","brm","chair","dwy"],motto:"Slow is smooth, and smooth is strong."},
+"Bilal Raza":{yrs:"10+",mem:"2,000+",lang:"Urdu, English",
+ about:["Bilal started as a stage dancer and fell in love with turning dance into fitness. He believes a workout should feel like a celebration, so he builds every class around music that gets people moving without watching the clock.","His dance fitness classes welcome all levels. Beginners follow the simple steps at the back of the room, regulars take on the bigger combinations, and everyone leaves with a smile and a good sweat."],
+ exp:[{t:"Lead Dance Fitness Instructor",w:"FitZone Fitness, DHA Karachi",y:"2020 \u2013 Present",d:"Teaches Zumba Spark and Low-Impact Cardio, and plans the monthly music and choreography calendar."},{t:"Group Fitness Instructor",w:"Fitness clubs, Karachi",y:"2016 \u2013 2020",d:"Led dance cardio classes of 30 to 50 members and trained new instructors."},{t:"Choreographer",w:"Community fitness events, Karachi",y:"2014 \u2013 2016",d:"Created group routines for charity runs, school events and wellness days."}],
+ cert:["Group Fitness Instructor certification","Dance fitness choreography workshop","Adult First Aid and CPR"],
+ pos:[["Brings the energy","Members say the room lights up the moment the music starts."],["Makes everyone feel included","Steps are taught slowly, so first-timers join in with confidence."],["Ends every class with a smile","A cool-down, some cheers and a little dance, the best way to finish."]],
+ str:["High energy","Rhythm and music","Motivating","Inclusive","Cardio fun"],cls:["zumba","llc"],motto:"If you can smile, you can dance."},
+"Sana Malik":{yrs:"7+",mem:"900+",lang:"Urdu, English",
+ about:["Sana teaches strength the way she wishes it had been taught to her: slowly, safely and with no pressure to lift heavy. She starts every new member with bodyweight basics and builds confidence before adding weights.","Her calm, encouraging coaching makes strength training approachable for beginners, busy parents and anyone restarting after a break. She loves watching members surprise themselves by lifting more than they thought they could."],
+ exp:[{t:"Strength Basics Coach",w:"FitZone Fitness, DHA Karachi",y:"2021 \u2013 Present",d:"Leads Strength Basics, Functional Strength and Circuit Training, and writes the beginner strength plans."},{t:"Personal Trainer",w:"Gyms in Karachi",y:"2018 \u2013 2021",d:"Coached one-to-one and small groups on form, fat loss and building strength."},{t:"Beginners Workshop Host",w:"Community fitness workshops, Karachi",y:"2017 \u2013 2018",d:"Hosted introductory strength sessions that helped first-timers feel confident in a gym."}],
+ cert:["Certified Personal Trainer","Strength and conditioning foundations","Adult First Aid and CPR"],
+ pos:[["Teaches safe form step by step","Members feel sure they are lifting the right way."],["No pressure, ever","You choose the weight and the pace, and she cheers you on."],["Celebrates small wins","Every extra rep and every better squat gets a real high five."]],
+ str:["Safe form","Encouraging","Beginner friendly","Strength basics","Confidence building"],cls:["str","fun","circ","legs","core"],motto:"Form first, weight later."},
+"Imran Qureshi":{yrs:"12+",mem:"1,800+",lang:"Urdu, English",
+ about:["Imran has spent over a decade helping people build stamina, from weekend footballers to office workers who have not exercised in years. He designs friendly, structured intervals that push you just enough, never too much.","He is the coach to see if you are restarting after a long break: he keeps the plan simple, tracks your progress and reminds you how far you have come."],
+ exp:[{t:"Head of Cardio and Conditioning",w:"FitZone Fitness, DHA Karachi",y:"2019 \u2013 Present",d:"Leads HIIT Express, Tabata Blast, Boxing Fit and Stretch and Recover, and builds the interval programme."},{t:"Conditioning Coach",w:"Local sports teams, Karachi",y:"2014 \u2013 2019",d:"Trained amateur football and cricket players on speed, stamina and injury prevention."},{t:"Gym Floor Trainer",w:"Fitness centres, Karachi",y:"2012 \u2013 2014",d:"Guided members on the gym floor and ran early-morning cardio groups."}],
+ cert:["Certified Personal Trainer","HIIT and conditioning specialist course","Adult First Aid and CPR"],
+ pos:[["Restarts you with confidence","Perfect after a long break, because the plan always feels doable."],["Keeps it fun and structured","Clear intervals, clear targets and plenty of encouragement."],["Tracks your progress","He notices every improvement and tells you about it."]],
+ str:["Stamina","Motivating","Structured","Injury aware","Great for restarts"],cls:["hiit","tab","box","rec","llc"],motto:"Restart today, stronger tomorrow."}
+};
+function drawTrainer(t){
+ const d=TPR[t.n],p=TPIC[t.n],f=t.n.split(" ")[0],cn=id=>{const c=C.find(x=>x.id===id);return c?c.n:id};
+ $("#pg-trainer").innerHTML=`<div class="w trp"><a class="trback" href="#studio">Back to Studio and trainers</a>
+<div class="trg"><figure class="trph"><div class="trpic" style="--b:url('${p}')"><img src="${p}" alt="${t.n}, ${t.r} at FitZone Fitness, DHA Karachi" decoding="async"></div></figure>
+<div class="trbody"><span class="ey">Trainer profile</span><h1>${t.n}</h1><p class="trrole">${t.r} &middot; FitZone, DHA Karachi</p>
+<div class="trstats"><div><b>${d.yrs}</b><span>Years of experience</span></div><div><b>${d.mem}</b><span>Members coached</span></div><div><b>${d.lang}</b><span>Languages</span></div></div>
+<blockquote class="trq">&ldquo;${d.motto}&rdquo;</blockquote>
+<h2>About ${f}</h2>${d.about.map(x=>`<p class="trp1">${x}</p>`).join("")}
+<h2>Work experience</h2><ol class="trtl">${d.exp.map(e=>`<li><b>${e.t}</b><span>${e.w} &middot; ${e.y}</span><p>${e.d}</p></li>`).join("")}</ol>
+<h2>Certifications and training</h2><ul class="ticks trtk">${d.cert.map(x=>`<li>${x}</li>`).join("")}</ul>
+<h2>Why members love ${f}</h2><div class="trpos">${d.pos.map(x=>`<div><b>${x[0]}</b><span>${x[1]}</span></div>`).join("")}</div>
+<h2>Strengths</h2><div class="trchips">${d.str.map(x=>`<span>${x}</span>`).join("")}</div>
+<h2>Classes with ${f}</h2><div class="trchips cl">${d.cls.map(id=>`<button type="button" data-bk="${id}">${cn(id)}</button>`).join("")}</div>
+<div class="tcta"><a class="btn" href="#classes">Book a class with ${f}</a><a class="btn o" href="#studio">All trainers</a></div>
+<p class="tnote">Sample profile text for the project.</p></div></div></div>`}
+const SEO={home:["FitZone Fitness Karachi | Gym, Yoga, Zumba & Personal Training in DHA Karachi","FitZone Fitness in DHA, Karachi: yoga, Zumba, HIIT, strength and boxing classes, expert trainers, diet plans and fitness gear. Book your free 1st class today."],
+classes:["Yoga, Zumba, HIIT & Strength Classes in Karachi | FitZone DHA","Browse 23 fitness classes in DHA Karachi: yoga, Zumba, HIIT, strength, Pilates, boxing and more. Beginner friendly, with a free 1st class."],
+learn:["Exercises & Workout Generator | FitZone Fitness Karachi","Learn exercises with simple steps and build a weekly workout plan with the FitZone workout generator. Made for Karachi members at every level."],
+diet:["Diet Plans & Healthy Eating Guide | FitZone Fitness Karachi","Simple diet plans, meal ideas and healthy eating tips for weight loss, muscle gain and everyday energy, from FitZone Fitness in Karachi."],
+shop:["Fitness Shop Karachi: Yoga Mats, Supplements & Gym Gear | FitZone","Shop yoga mats, dumbbells, resistance bands, protein, creatine, gym bags and more from FitZone Fitness, Karachi."],
+studio:["Our Gym Studio & Trainers in DHA Karachi | FitZone Fitness","Take a video tour of the FitZone gym in DHA, Karachi, meet our expert trainers and see opening hours and how to find us."],
+book:["Book a Fitness Class in Karachi | FitZone DHA","Pick a class, choose a time and book in a few steps. Your 1st FitZone class is free. Yoga, Zumba, HIIT and strength in DHA Karachi."]};
+function seo(h,t){let ti,de;if(t){ti=t.n+" | "+t.r+" in Karachi | FitZone Fitness DHA";de=t.n+", "+t.r.toLowerCase()+" at FitZone Fitness, DHA Karachi. "+TPR[t.n].yrs+" years of experience. "+TPR[t.n].about[0].slice(0,95).replace(/\s+\S*$/,"")+"...";}else{const s=SEO[h]||SEO.home;ti=s[0];de=s[1]}
+ document.title=ti;const m=document.querySelector('meta[name="description"]');if(m)m.setAttribute("content",de)}
 $("#mq").innerHTML=("<b>FitZone</b> ✦ Morning Flow Yoga ✦ Zumba Spark ✦ Strength Basics ✦ Desk-Reset Stretch ✦ HIIT Express ✦ Pilates Core ✦ Boxing Fit ✦ Chair Yoga ✦ <b>1st Class Free</b> ✦ FitZone Protein ✦ Yoga Mats ✦ Hand Grippers ✦ Resistance Bands ✦ Diet Plans ✦ ").repeat(4);
 const st={};let fl="All";
 /* Class photos (shown whole). Click a class photo to open it larger, with "Book this class" below. */
@@ -23,7 +76,8 @@ pwr:"images/class-power-yoga.webp",chair:"images/class-chair-yoga.webp",
 hatha:"images/class-hatha-basics.webp",sunv:"images/class-sunset-vinyasa.webp",ash:"images/class-ashtanga-basics.webp",yin:"images/class-yin-yoga.webp",brm:"images/class-breath-meditation.webp",dwy:"images/class-desk-worker-yoga.webp",llc:"images/class-low-impact-cardio.webp",circ:"images/class-circuit-training.webp",tab:"images/class-tabata-blast.webp",fun:"images/class-functional-strength.webp",barre:"images/class-barre-tone.webp"};
 const P1=id=>[].concat(CPIC[id]||[])[0];
 const cim=c=>P1(c.id)?`<div class="im has-img bf" style="--b:url('${P1(c.id)}')" data-vid="${c.id}" role="button" tabindex="0" aria-label="View ${c.n}"><img src="${P1(c.id)}" alt="${c.n} class" loading="lazy" decoding="async"></div>`:`<div class="im" data-vid="${c.id}" role="button" tabindex="0" aria-label="View ${c.n}">${art(c.id)}</div>`;
-const card=(c,btn)=>`<div class="card rv">${btn?cim(c):`<div class="im">${art(c.id)}</div>`}<div class="tx"><h3>${c.n}</h3><p class="mut" style="margin-top:8px">${c.d}</p><span class="tag">${c.l}</span><span class="tag">${c.m}</span><span class="tag">${c.t}</span><span class="tag" style="background:var(--b);color:#2a2200">Rs. ${c.p}</span>${btn?`<div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn" style="padding:11px 22px" data-bk="${c.id}">Book this class</button></div>`:""}</div></div>`;
+const cimS=c=>P1(c.id)?`<div class="im has-img bf" style="--b:url('${P1(c.id)}')"><img src="${P1(c.id)}" alt="${c.n} class" loading="lazy" decoding="async"></div>`:`<div class="im">${art(c.id)}</div>`;
+const card=(c,btn)=>`<div class="card rv">${btn?cim(c):cimS(c)}<div class="tx"><h3>${c.n}</h3><p class="mut" style="margin-top:8px">${c.d}</p><span class="tag">${c.l}</span><span class="tag">${c.m}</span><span class="tag">${c.t}</span><span class="tag" style="background:var(--b);color:#2a2200">Rs. ${c.p}</span>${btn?`<div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn" style="padding:11px 22px" data-bk="${c.id}">Book this class</button></div>`:""}</div></div>`;
 function chips(el,items,fn,cur){el.innerHTML="";items.forEach(([k,t])=>{const b=document.createElement("button");b.className="opt";b.textContent=t;b.setAttribute("aria-pressed",cur===k);b.onclick=()=>fn(k);el.appendChild(b)})}
 let ct="",cg2="All";
 const CAT={yoga:["Hatha (gentle)","Vinyasa (flow)","Power and Ashtanga","Yin and Restore","Breath and Meditation","Chair and Desk"],ex:["Strength","Cardio and HIIT","Dance and Boxing","Core and Pilates","Stretch and Recovery"]};
@@ -33,7 +87,7 @@ chips($("#cct"),ct?["All",...CAT[ct]].map(x=>[x,x]):[],k=>{cg2=k;drawC()},cg2);
 chips($("#flt"),["All","Beginner","Intermediate","All Levels","Relaxing","Energetic","Morning","Evening"].map(x=>[x,x]),k=>{fl=k;drawC()},fl);
 const l=C.filter(c=>(!ct||c.ty===ct)&&(cg2==="All"||c.cat===cg2)&&(fl==="All"||[c.l,c.m,c.t].includes(fl)));
 $("#cg").innerHTML=l.length?l.map(c=>card(c,1)).join(""):'<p class="mut">No classes match. Try another filter.</p>';$$("[data-bk]").forEach(b=>b.onclick=()=>{st.c=b.dataset.bk;st.s=null;drawB();location.hash="book"});reveal()}
-$("#tg").innerHTML=T.map(t=>`<div class="card rv">${tim(t)}<div class="tx"><h3>${t.n}</h3><p style="font-weight:700;color:var(--a);margin-top:6px">${t.r}</p><p class="mut" style="margin-top:8px">${t.b}</p></div></div>`).join("");
+$("#tg").innerHTML=T.map(t=>`<a class="card rv trc" href="#trainer-${slug(t.n)}" aria-label="View ${t.n}'s full profile">${tim(t)}<div class="tx"><h3>${t.n}</h3><p style="font-weight:700;color:var(--a);margin-top:6px">${t.r}</p><p class="mut" style="margin-top:8px">${t.b}</p><span class="more">View full profile</span></div></a>`).join("");
 const days=[...Array(5)].map((_,i)=>{const d=new Date();d.setDate(d.getDate()+i+1);return[d.toDateString(),d.toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"})]});
 const SL={Morning:["7:00 AM","8:30 AM"],Evening:["6:30 PM","8:00 PM"]};
 function drawB(){chips($("#oC"),C.map(c=>[c.id,`${c.n} · ${c.l}`]),k=>{st.c=k;st.s=null;drawB()},st.c);chips($("#oD"),days,k=>{st.d=k;drawB()},st.d);
@@ -43,7 +97,7 @@ function pane(id){$$(".pane").forEach(p=>p.classList.toggle("show",p.id===id));$
 $("#n1").onclick=()=>{const c=C.find(x=>x.id===st.c);$("#sum").innerHTML=[["Class",c.n],["Level",c.l],["Trainer",T[c.tr].n],["Date (simulated)",days.find(d=>d[0]===st.d)[1]],["Time slot",st.s],["Price",fr()?"Free (1st class)":"Rs. "+c.p+" (simulated)"]].map(r=>`<div><span class="mut">${r[0]}</span><b>${r[1]}</b></div>`).join("");$("#tn").textContent=fr()?"Free 1st class (simulated): no payment needed, cancel anytime.":"Paid class (simulated): no real payment is taken in this demo.";pane("p2")};
 $$("[data-b]").forEach(b=>b.onclick=()=>pane(b.dataset.b));$("#n2").onclick=()=>pane("p3");
 $("#n3").onclick=()=>{const f=fr(),c=C.find(x=>x.id===st.c),nm=($("#nm").value.trim()||"Test User").replace(/</g,"&lt;");
-$("#pass").innerHTML=`<p class="mut">Trial booked for</p><h3 style="font-size:2.2rem;margin:6px 0">${nm}</h3><p><b>${c.n}</b> with ${T[c.tr].n}</p><p>${days.find(d=>d[0]===st.d)[1]} at ${st.s}</p><div class="rdy">⏰ Your class time is <b>${days.find(d=>d[0]===st.d)[1]} at ${st.s}</b>.<br>Be ready for your class!<span id="cd"></span></div><span class="st">SAMPLE/DEMO – NOT A VALID PASS</span><p class="mut" style="margin-top:12px;font-size:.88rem">${f?"Free 1st class":"Paid class: Rs. "+c.p+" (simulated, no payment taken)"}</p>`;setB(getB()+1);st.p=null;sug();pane("p4");startCd();if(f)freeVid(c);else $("#pvid").innerHTML="";
+$("#pass").innerHTML=`<p class="mut">Trial booked for</p><h3 style="font-size:2.2rem;margin:6px 0">${nm}</h3><p><b>${c.n}</b> with ${T[c.tr].n}</p><p>${days.find(d=>d[0]===st.d)[1]} at ${st.s}</p><div class="rdy">⏰ Your class time is <b>${days.find(d=>d[0]===st.d)[1]} at ${st.s}</b>.<br>Be ready for your class!<span id="cd"></span></div><span class="st">SAMPLE/DEMO – NOT A VALID PASS</span><p class="mut" style="margin-top:12px;font-size:.88rem">${f?"Free 1st class":"Paid class: Rs. "+c.p+" (simulated, no payment taken)"}</p>`;setB(getB()+1);st.p=null;sug();pane("p4");startCd();
 for(let i=0;i<60;i++){const e=document.createElement("i");e.className="cf";e.style.left=Math.random()*100+"vw";e.style.background=["#9fd11a","#c8f03a","#d9f65a","#16a34a"][i%4];e.style.animationDelay=Math.random()*.8+"s";document.body.appendChild(e);setTimeout(()=>e.remove(),3800)}};
 function sug(){chips($("#oP"),[["Morning","Morning"],["Evening","Evening"],["Relaxing","Relaxing"],["Energetic","Energetic"],["Beginner","Beginner-friendly"]],k=>{st.p=k;sug()},st.p);
 const p=st.p,l=C.filter(c=>c.id!==st.c&&(!p||c.t===p||c.m===p||(p==="Beginner"&&c.l==="Beginner")));
@@ -54,7 +108,7 @@ if(v)v.onclick=()=>{if(v.classList.contains("on"))return;v.classList.add("on");s
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const t=e.target;t.classList.add("in");io.unobserve(t);$$("[data-n]",t);t.querySelectorAll("[data-n]").forEach(c=>{const n=+c.dataset.n;if(!n)return;let i=0;const x=setInterval(()=>{c.textContent=++i+(c.dataset.s||"");if(i>=n)clearInterval(x)},900/n)})}}),{threshold:.12});
 function reveal(){$$(".rv:not(.in)").forEach((e,i)=>{e.style.transitionDelay=(i%4)*90+"ms";io.observe(e)})}
 const pages=["home","classes","learn","diet","shop","studio","book"];
-function route(){let h=location.hash.slice(1);if(!pages.includes(h))h="home";$$(".pg").forEach(p=>p.hidden=p.id!=="pg-"+h);$$(".links a").forEach(a=>a.classList.toggle("act",a.dataset.p===h));$("#nav").classList.remove("open");gate(h);if(h==="classes"&&!me()&&!$("#md"))openAuth("in",0);scrollTo(0,0);reveal()}
+function route(){let h=location.hash.slice(1),tr=null;if(h.indexOf("trainer-")===0){tr=T.find(x=>slug(x.n)===h.slice(8))||null;h=tr?"trainer":"home"}else if(!pages.includes(h))h="home";if(tr)drawTrainer(tr);$$(".pg").forEach(p=>p.hidden=p.id!=="pg-"+h);$$(".links a").forEach(a=>a.classList.toggle("act",a.dataset.p===(h==="trainer"?"studio":h)));$("#nav").classList.remove("open");gate(h);if(h==="classes"&&!me()&&!$("#md"))openAuth("in",0);seo(h,tr);scrollTo(0,0);reveal()}
 addEventListener("hashchange",route);$("#mb").onclick=()=>$("#nav").classList.toggle("open");
 addEventListener("scroll",()=>{$("#pb").style.width=scrollY/Math.max(1,document.body.scrollHeight-innerHeight)*100+"%"},{passive:true});
  
@@ -295,7 +349,6 @@ $$("#agc button").forEach(b=>b.onclick=()=>agSend(b.textContent));
 $("#agb").onclick=()=>{const p=$("#agp");p.hidden=!p.hidden;if(!p.hidden)setTimeout(()=>$("#agq").focus(),50)};$("#agx").onclick=()=>{$("#agp").hidden=true};
 $("#ags").onclick=()=>agSend($("#agq").value);$("#agq").onkeydown=e=>{if(e.key==="Enter")agSend($("#agq").value)};
 const CLS_T={yoga:"wr",zumba:"jj",str:"sq",desk:"cc",hiit:"bp",pil:"cr",box:"bx",chair:"se",core:"pl",legs:"lg",pwr:"wr",rec:"fo",hatha:"mt",sunv:"wr",ash:"wr",yin:"ch",brm:"sb",dwy:"cc",llc:"hk",circ:"sq",tab:"mc",fun:"hg",barre:"ca"};
-function freeVid(c){const t=CLS_T[c.id]||"sq";$("#pvid").innerHTML=`<h3 style="margin-top:34px">🎬 Your free class video: ${c.n}</h3><p class="mut" style="margin:6px 0 14px">Watch the moves you will practise in class.</p>${demoBox(t,1)}`;startDemo(t,.9,c.v,$("#pvid"))}
 let cdT=0;function startCd(){const t=++cdT,tg=new Date(st.d+" "+st.s);const f=()=>{const el=$("#cd");if(t!==cdT||!el)return;const ms=tg-new Date();el.textContent=isNaN(ms)?"":ms<=0?" It’s time!":" Starts in "+(ms>=864e5?Math.floor(ms/864e5)+" d ":"")+Math.floor(ms%864e5/36e5)+" h "+Math.floor(ms%36e5/6e4)+" min.";setTimeout(f,30000)};f()}
 const BLG=[["5 Easy Foods to Fuel Your Workouts","Nutrition",["Good fuel helps you feel steady. Try a banana or dates before class, daal or eggs for protein, roasted chana as a snack, and yogurt after training.","Drink water through the day, and eat small regular meals instead of skipping them.","This is general information, not medical advice."]],
 ["How to Start Strength Training Safely","Workouts",["Start with bodyweight moves like squats and glute bridges. Learn the form first, then add light weights.","Two or three sessions a week with a rest day in between is a good start. Warm up for five minutes and stop if anything hurts.","See our Exercises page for animated demos at Beginner level."]],
@@ -342,3 +395,49 @@ drawC();drawB();drawProf();drawD();drawX();drawY();drawWG();{const sw=LS.get("fz
  
 /* Studio tour video: pause it when you leave the page */
 addEventListener("hashchange",()=>{const t=document.getElementById("tv");if(t&&!t.paused)t.pause()});
+
+/* Hero heading: "Train Hard." then "Live Strong." are typed out letter by letter, line after line.
+   Plays when the site opens and again every time you come back to Home. */
+(function(){
+const h1=document.querySelector(".hx h1");if(!h1)return;
+const lines=[...h1.querySelectorAll("b")];if(!lines.length)return;
+h1.setAttribute("aria-label",h1.textContent.trim().replace(/\s+/g," "));
+function split(node){[...node.childNodes].forEach(n=>{if(n.nodeType===3){const f=document.createDocumentFragment();[...n.textContent].forEach(c=>{const s=document.createElement("span");s.className=c===" "?"ch sp":"ch";s.setAttribute("aria-hidden","true");s.textContent=c;f.appendChild(s)});n.replaceWith(f)}else if(n.nodeType===1)split(n)})}
+lines.forEach(split);
+const still=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let timers=[];
+let play=function(){
+ timers.forEach(clearTimeout);timers=[];
+ const all=[...h1.querySelectorAll(".ch")];all.forEach(c=>c.classList.remove("on","cur"));
+ h1.classList.add("typing");
+ if(still){all.forEach(c=>c.classList.add("on"));h1.style.setProperty("--t1","0s");h1.style.setProperty("--t2","0s");return}
+ let t=500,prev=null;
+ lines.forEach(ln=>{
+  [...ln.querySelectorAll(".ch")].forEach(c=>{
+   t+=c.classList.contains("sp")?70:78+Math.random()*34;
+   timers.push(setTimeout(()=>{if(prev)prev.classList.remove("cur");c.classList.add("on","cur");prev=c},t));
+  });
+  t+=320;                                   /* small pause before the next line */
+ });
+ h1.style.setProperty("--t1",(t-150)+"ms");h1.style.setProperty("--t2",(t+80)+"ms");   /* text + buttons appear after the typing */
+ timers.push(setTimeout(()=>{if(prev)prev.classList.remove("cur")},t+2200));
+}
+/* If the welcome window is open (or about to open), wait until it is closed, so the typing is actually seen */
+let mo=null,tm=0;
+function start(initial){
+ if(mo){mo.disconnect();mo=null}clearTimeout(tm);
+ const expect=initial&&typeof LS!=="undefined"&&!LS.get("fz_p");
+ if(document.getElementById("md")||expect){
+  h1.classList.add("waiting");timers.forEach(clearTimeout);timers=[];h1.querySelectorAll(".ch").forEach(c=>c.classList.remove("on","cur"));
+  let seen=!!document.getElementById("md");
+  mo=new MutationObserver(()=>{const open=!!document.getElementById("md");if(open)seen=true;else if(seen){mo.disconnect();mo=null;clearTimeout(tm);setTimeout(play,300)}});
+  mo.observe(document.body,{childList:true,subtree:true});
+  tm=setTimeout(()=>{if(!seen&&mo){mo.disconnect();mo=null;play()}},1600);   /* the window never opened: just start */
+  return;
+ }
+ play();
+}
+const _play=play;play=function(){h1.classList.remove("waiting");_play()};
+start(true);
+addEventListener("hashchange",()=>{const p=document.getElementById("pg-home");if(p&&!p.hidden)start()});
+})();
