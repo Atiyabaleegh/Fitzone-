@@ -10,6 +10,7 @@ Put ALL of these together in one folder (keep the folder names exactly as they a
   products/         Shop product photos (24 files)
   images/           Home, Classes, Studio, Trainers pictures (44 files)
   robots.txt        tells search engines they may read the site
+  sitemap.xml       XML sitemap listing website pages for search engines
   video/            Studio tour video (gym-tour.mp4) and its poster picture
 
 Where the picture names are written:
